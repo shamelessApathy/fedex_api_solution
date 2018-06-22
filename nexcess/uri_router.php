@@ -6,23 +6,18 @@ class uri_router {
 		{
 			// Remove the "/" pre-pending the URI
 			$splode = explode('/',$uri);
-			$controller = $splode[1];
-			if ($controller === "")
+			$method = $splode[1];
+			if (isset($method)  && $method != "")
 			{
-				echo "this API requires you specify a controller and method";
-			}
-			// Checks if a method is set to be called by the controller
-			if (isset($splode[2]) && $splode[2] != null)
-			{
-				$method = $splode[2];
-			}
-			$controller_string = $controller . 'Controller.php';
-			require_once(CONTROLLERS . "/".$controller_string);
-			$controllerConcat = "$controller" . "Controller";
-			$cont = new $controllerConcat();
-			if (isset($method))
-			{
-				$cont->$method();
+				echo "method set <br />";
+				var_dump($method);
+
+				// require api controller
+				require('controllers/apiController.php');
+				echo "<br /> after require";
+				$controller_name = "apiController";
+				$apiController = new $controller_name();
+				$apiController->$method();
 			}
 		}
 	}
