@@ -10,8 +10,8 @@ class apiController {
 	{
 		$host = '127.0.0.1';
 		$db   = 'fedex_api';
-		$user = 'root';
-		$pass = 'Poke8112';
+		$user = 'test';
+		$pass = 'test';
 		$charset = 'utf8mb4';
 
 		$options = [
